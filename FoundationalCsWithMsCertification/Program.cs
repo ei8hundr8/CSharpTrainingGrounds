@@ -4,62 +4,84 @@
 	{
 		static void Main(string[] args)
 		{
-			/* Student grades:
-			 * Sophia:  93, 87, 98, 95, 100
-				 Nicolas: 80, 83, 82, 88, 85
-				 Zahirah: 84, 96, 73, 85, 79
-				 Jeong:   90, 92, 98, 100, 97
-			 * 
-			 * Expected Output Format:
-			 * Student     Grade
-				 Sophia      94.6  A
-				 Nicolas     83.6  B
-				 Zahirah     83.4  B
-				 Jeong       95.4  A
+			/* Project overview
+				 You're developing a Student GPA Calculator that will help calculate students' overall Grade Point Average. The parameters for your application are:
+				 You're given the student's name and class information.
+				 Each class has a name, the student's grade, and the number of credit hours for that class.
+				 Your application needs to perform basic math operations to calculate the GPA for the given student.
+				 Your application needs to output/display the student’s name, class information, and GPA.
+					
+				 To calculate the GPA:
+				 Multiply the grade value for a course by the number of credit hours for that course.
+				 Do this for each course, then add these results together.
+				 Divide the resulting sum by the total number of credit hours.
+
+				 Expected Output:
+				 Student: Sophia Johnson
+
+				 Course          Grade    Credit Hours	
+				 English 101         4 A      3
+				 Algebra 101         3 B      3
+				 Biology 101         3 B      4
+				 Computer Science I  3 B      4
+				 Psychology 101      4 A      3
+
+				 Final GPA:          3.35
 			 */
 
-			int currentAssignments = 5;
+			string studentName = "Sophia Johnson";
+			string courseName1 = "English 101";
+			string courseName2 = "Algebra 101";
+			string courseName3 = "Biology 101";
+			string courseName4 = "Computer Science I";
+			string courseName5 = "Psychology 101";
 
-			int sophia1 = 93;
-			int sophia2 = 87;
-			int sophia3 = 98;
-			int sophia4 = 95;
-			int sophia5 = 100;
+			int courseCredit1 = 3;
+			int courseCredit2 = 3;
+			int courseCredit3 = 4;
+			int courseCredit4 = 4;
+			int courseCredit5 = 3;
 
-			int nicolas1 = 80;
-			int nicolas2 = 83;
-			int nicolas3 = 82;
-			int nicolas4 = 88;
-			int nicolas5 = 85;
+			int gradeA = 4;
+			int gradeB = 3;
 
-			int zahirah1 = 84;
-			int zahirah2 = 96;
-			int zahirah3 = 73;
-			int zahirah4 = 85;
-			int zahirah5 = 79;
+			int courseGrade1 = gradeA;
+			int courseGrade2 = gradeB;
+			int courseGrade3 = gradeB;
+			int courseGrade4 = gradeB;
+			int courseGrade5 = gradeA;
 
-			int jeong1 = 90;
-			int jeong2 = 92;
-			int jeong3 = 98;
-			int jeong4 = 100;
-			int jeong5 = 97;
+			int totalCreditHours = 0;
 
-			int sophiaSum = sophia1 + sophia2 + sophia3 + sophia4 + sophia5;
-			int nicolasSum = nicolas1 + nicolas2 + nicolas3 + nicolas4 + nicolas5;
-			int zahirahSum = zahirah1 + zahirah2 + zahirah3 + zahirah4 + zahirah5;
-			int jeongSum = jeong1 + jeong2 + jeong3 + jeong4 + jeong5;
+			totalCreditHours += courseCredit1;
+			totalCreditHours += courseCredit2;
+			totalCreditHours += courseCredit3;
+			totalCreditHours += courseCredit4;
+			totalCreditHours += courseCredit5;
 
-			decimal sophiaScore = (decimal)sophiaSum / currentAssignments;
-			decimal nicolasScore = (decimal)nicolasSum / currentAssignments;
-			decimal zahirahScore = (decimal)zahirahSum / currentAssignments;
-			decimal jeongScore = (decimal)jeongSum / currentAssignments;
+			int totalGradePoints = 0;
 
+			totalGradePoints += courseGrade1 * courseCredit1;
+			totalGradePoints += courseGrade2 * courseCredit2;
+			totalGradePoints += courseGrade3 * courseCredit3;
+			totalGradePoints += courseGrade4 * courseCredit4;
+			totalGradePoints += courseGrade5 * courseCredit5;
 
-			Console.WriteLine($"Sophia: {sophiaScore} A");
-			Console.WriteLine($"Nicolas: {nicolasScore} B");
-			Console.WriteLine($"Zahirah: {zahirahScore} B");
-			Console.WriteLine($"Jeong: {jeongScore} A");
+			decimal gradePointAverage = (decimal)totalGradePoints / totalCreditHours;
 
+			int leadingDigit = (int)gradePointAverage;
+			int firstDigit = (int)(gradePointAverage * 10) % 10;
+			int secondDigit = (int)(gradePointAverage * 100) % 10;
+
+			Console.WriteLine($"Student: {studentName}\n");
+			Console.WriteLine($"Course\t\t\tGrade\tCredit Hours");
+
+			Console.WriteLine($"{courseName1}\t\t{courseGrade1}\t{courseCredit1}");
+			Console.WriteLine($"{courseName2}\t\t{courseGrade2}\t{courseCredit2}");
+			Console.WriteLine($"{courseName3}		{courseGrade3}	{courseCredit3}");
+			Console.WriteLine($"{courseName4}	{courseGrade4}	{courseCredit4}");
+			Console.WriteLine($"{courseName5}		{courseGrade5}	{courseCredit5}");
+			Console.WriteLine($"\nFinal GPA:		{leadingDigit}.{firstDigit}{secondDigit}");
 		}
 	}
 }
